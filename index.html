@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BunDM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="auth-screen" class="screen">
+    <div class="auth-card glass">
+      <h1 class="brand">Bunna <span class="muted">DM</span></h1>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="login">Log in</button>
+        <button class="tab" data-tab="signup">Sign up</button>
+      </div>
+
+      <form id="login-form" class="form show" autocomplete="off">
+        <label>
+          Handle
+          <div class="handle-wrap">
+            <span class="at">@</span>
+            <input id="login-handle" type="text" placeholder="yourname" minlength="3" maxlength="20" required />
+          </div>
+        </label>
+        <label>
+          Password
+          <input id="login-password" type="password" placeholder="••••••••" minlength="6" required />
+        </label>
+        <button class="primary" type="submit">Log in</button>
+        <p class="hint">No email needed — we use your @handle as a login.</p>
+        <p class="error" id="login-error"></p>
+      </form>
+
+      <form id="signup-form" class="form" autocomplete="off">
+        <label>
+          Handle
+          <div class="handle-wrap">
+            <span class="at">@</span>
+            <input id="signup-handle" type="text" placeholder="yourname" minlength="3" maxlength="20" required />
+          </div>
+        </label>
+        <label>
+          Password (6+ chars)
+          <input id="signup-password" type="password" placeholder="Create a password" minlength="6" required />
+        </label>
+        <button class="primary" type="submit">Create account</button>
+        <p class="hint">Allowed: letters, numbers, underscore.</p>
+        <p class="error" id="signup-error"></p>
+      </form>
+    </div>
+  </div>
+
+  <div id="app" class="hidden">
+    <header class="appbar glass">
+      <div class="appbar-left">
+        <div class="me-top">
+          <div class="me-dot"></div>
+          <span id="me-handle" class="me-handle">@you</span>
+        </div>
+        <small id="me-id" class="uid">—</small>
+      </div>
+      <button id="signout" class="ghost">Sign out</button>
+    </header>
+
+    <div class="app-body">
+      <aside class="sidebar glass">
+        <div class="start-chat">
+          <label for="start-to" class="start-label">Start chat with</label>
+          <div class="handle-wrap">
+            <span class="at">@</span>
+            <input id="start-to" type="text" placeholder="friend" />
+          </div>
+          <button id="start-btn" class="secondary">Start</button>
+          <p class="error" id="start-error"></p>
+        </div>
+
+        <div class="convos">
+          <div class="convos-header sticky">
+            <h3>Chats</h3>
+          </div>
+          <div id="convo-list" class="convo-list"></div>
+        </div>
+      </aside>
+
+      <main class="chat glass">
+        <header class="chat-header sticky">
+          <div class="peer-top">
+            <div class="peer-avatar">💬</div>
+            <h2 id="peer-handle">Select a chat</h2>
+          </div>
+          <small id="peer-id" class="uid"></small>
+        </header>
+
+        <section id="messages" class="messages">
+          <div id="empty-state" class="empty">
+            <div class="big-emoji">Welcome to BunnaDM.</div>
+            <p>Select a chat or start a new one.</p>
+          </div>
+        </section>
+
+        <footer class="composer">
+          <textarea id="message-input" rows="1" placeholder="Type a message (Enter to send • Shift+Enter = newline)"></textarea>
+          <button id="send-btn" class="primary" title="Send (Enter)">Send</button>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
